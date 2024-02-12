@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const dns = require("dns");
+const cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 app.get("/api/v1/testIp", (req, res, next) => {
   try {
