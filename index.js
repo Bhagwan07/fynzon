@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dns = require("dns");
 
+app.use(express.json());
 app.get("/api/v1/testIp", (req, res, next) => {
   try {
     const hostname = req.hostname;
@@ -18,7 +19,9 @@ app.get("/api/v1/testIp", (req, res, next) => {
         console.log(`- ${address}`);
       });
       ip = addresses;
-      res.send(addresses);
+      const clientIP = req.connection.remoteAddress;
+      const ipreq = req.ip;
+      res.send({ clientIP, ipreq });
     });
   } catch (err) {
     next(err);
