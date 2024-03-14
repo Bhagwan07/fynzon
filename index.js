@@ -9,7 +9,8 @@ app.get("/api/v1/testIp", (req, res, next) => {
   try {
    console.log(req.headers["x-real-ip"]);
     res.send({
-      ip:req.headers["x-real-ip"]
+      ip:req.headers["x-real-ip"],
+      error:true
     })
   } catch (err) {
     next(err);
