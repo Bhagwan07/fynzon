@@ -9,6 +9,7 @@ app.get("/api/v1/testIp", (req, res, next) => {
   try {
     const serverIp = req.connection.remoteAddress;
     console.log("Server IP:", serverIp);
+    console.log("hi");
    console.log(req.headers["x-real-ip"]);
     res.send({
       ServerIP:serverIp,
