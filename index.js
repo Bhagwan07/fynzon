@@ -10,10 +10,10 @@ app.get("/api/v1/testIp", (req, res, next) => {
     const serverIp = req.connection.remoteAddress;
     console.log("Server IP:", serverIp);
     console.log("hi");
-   console.log(req.headers["x-real-ip"]);
+   console.log("Remote IP:", req.ip);
     res.status(200).json({
       ServerIP:serverIp,
-      ip:req.headers["x-real-ip"],
+      ip:req.ip,
       error:false
     })
   } catch (err) {
