@@ -11,7 +11,7 @@ app.get("/api/v1/testIp", (req, res, next) => {
     console.log("Server IP:", serverIp);
     console.log("hi");
    console.log(req.headers["x-real-ip"]);
-    res.send({
+    res.status(200).json({
       ServerIP:serverIp,
       ip:req.headers["x-real-ip"],
       error:false
