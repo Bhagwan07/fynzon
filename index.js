@@ -9,7 +9,10 @@ app.use(expressip().getIpInfoMiddleware);
 
 app.get("/api/v1/testIp", (req, res, next) => {
   try {
-    res.send(req.ipInfo);
+   console.log(req.headers["x-real-ip"]);
+    res.send({
+      ip:req.headers["x-real-ip"]
+    })
   } catch (err) {
     next(err);
   }
