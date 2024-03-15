@@ -7,15 +7,13 @@ app.use(express.json());
 
 app.get("/api/v1/testIp", (req, res, next) => {
   try {
-    const serverIp = req.connection.remoteAddress;
-    console.log("Server IP:", serverIp);
-    console.log("hi");
-   console.log("Remote IP:", req.ip);
-    res.status(200).json({
-      ServerIP:serverIp,
-      ip:req.ip,
-      error:false
-    })
+    fetch("https://apiv2.fynzon.com/shared/test/api/v1/testing").then(
+      (response) => {
+        response.json().then((data) => {
+          res.status(200).json(data);
+        });
+      }
+    );
   } catch (err) {
     next(err);
   }
