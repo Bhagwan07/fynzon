@@ -10,6 +10,7 @@ app.get("/api/v1/testIp", (req, res, next) => {
     fetch("https://apiv2.fynzon.com/shared/test/api/v1/testing").then(
       (response) => {
         response.json().then((data) => {
+          console.log(data)
           res.status(200).json(data);
         });
       }
