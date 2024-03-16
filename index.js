@@ -7,14 +7,24 @@ app.use(express.json());
 
 app.get("/api/v1/testIp", (req, res, next) => {
   try {
-    fetch("https://apiv2.fynzon.com/shared/test/api/v1/testing").then(
-      (response) => {
-        response.json().then((data) => {
-          console.log(data)
-          res.status(200).json(data);
-        });
-      }
-    );
+  fetch("https://testapi.virtualgaintechnologies.com/yb/payout/api/v1/merchant/payment", {
+  method:"POST",
+  headers: {
+    "api-key-id": "api_prod.lZuol5My9gDSM8X1LsMwTt3q1",
+    "api-secret-key": "j4IIVWCoOv0vZox"
+  },
+  body:{
+    "ifscCode":"YESB0000262",
+    "accountNumber":"026291800001191",    "transferType":"IMPS",
+    "amount":110,    "uniqueId":"IO00876UeyeyYEWEYTEhu2"
+  }
+}).then((data)=>{
+  data.json().then((data)=>{
+    console.log(data)
+    res.status(200).json(data)
+  })
+});
+    
   } catch (err) {
     next(err);
   }
